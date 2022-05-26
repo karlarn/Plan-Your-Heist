@@ -6,7 +6,9 @@ namespace Plan_Your_Heist
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            TeamMember hal= new TeamMember("hal",6,1.2);
+
+            Console.WriteLine($"{hal.Name}, {hal.SkillLevel}, {hal.CourageFactor}");
         }
     }
 }
