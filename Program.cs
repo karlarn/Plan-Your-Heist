@@ -10,6 +10,8 @@ namespace Plan_Your_Heist
            Console.WriteLine("Plan Your Heist!");
            bool keepLooping = true;
            List<TeamMember> teamList = new List<TeamMember>();
+           int bankDifficulty = 100;
+           int accumulatedSkill = 0;
 
            while(keepLooping==true)
            {
@@ -33,8 +35,18 @@ namespace Plan_Your_Heist
            Console.WriteLine($"You have {teamList.Count} members on your team.");
            foreach(TeamMember i in teamList)
            {
-               Console.WriteLine($"{i.Name}, {i.SkillLevel}, {i.CourageFactor}");
+               accumulatedSkill+= i.SkillLevel;
            }
+
+           if(accumulatedSkill<bankDifficulty)
+           {
+               Console.WriteLine("Your Heist Failed");
+           }
+           else
+           {
+               Console.WriteLine("Your Heist Succeded");
+           }
+           
            
         }
     }
