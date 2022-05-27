@@ -10,14 +10,11 @@ namespace Plan_Your_Heist
            Console.WriteLine("Plan Your Heist!");
            bool keepLooping = true;
            List<TeamMember> teamList = new List<TeamMember>();
-           int bankLevel = 100;
-           int luckValue = new Random().Next(-10,11);
-           int accumulatedSkill = 0;
-           int bankDifficulty = bankLevel + luckValue;
+           
 
            while(keepLooping==true)
            {
-               Console.WriteLine("Whats your team member's name?");
+               Console.Write("Whats your team member's name?");
                string name = Console.ReadLine();
                if (name == "") 
                {
@@ -25,22 +22,35 @@ namespace Plan_Your_Heist
                } 
                else
                {
-                    Console.WriteLine("On a scale of 1 to 10 what is this team member's skill level?");
+                    Console.Write("On a scale of 1 to 10 what is this team member's skill level?");
                     int skill = int.Parse(Console.ReadLine());
-                    Console.WriteLine("On a scale of .0 to 2.0 what is this team member's courage factor?");
+                    Console.Write("On a scale of .0 to 2.0 what is this team member's courage factor?");
                     double courage = double.Parse(Console.ReadLine());
                     TeamMember member = new TeamMember(name, skill, courage);
                     teamList.Add(member);
                }  
            }
 
-           Console.WriteLine($"You have {teamList.Count} members on your team.");
+           int accumulatedSkill = 0;
            foreach(TeamMember i in teamList)
            {
                accumulatedSkill+= i.SkillLevel;
            }
 
-           Console.WriteLine($"The team's combined skill level is {accumulatedSkill}");
+           Console.WriteLine($@"You have {teamList.Count} members on your team.
+           
+           The team's combined skill level is {accumulatedSkill}
+           ");
+           Console.Write(@"Let's do some trial runs to see how successful you are. 
+           how many trials would you like to run?");
+           int trialRuns = int.Parse(Console.ReadLine());
+
+           for (int i=0; i<trialRuns;i++)
+           {
+            int bankLevel = 100;
+           int luckValue = new Random().Next(-10,11);
+           int bankDifficulty = bankLevel + luckValue;
+
            Console.WriteLine($"The bank has a difficulty level of {bankDifficulty}");
 
            if(accumulatedSkill<bankDifficulty)
@@ -51,6 +61,8 @@ namespace Plan_Your_Heist
            {
                Console.WriteLine("Your Heist Succeded");
            }
+           }
+
            
            
         }
