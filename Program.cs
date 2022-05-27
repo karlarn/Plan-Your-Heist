@@ -10,8 +10,10 @@ namespace Plan_Your_Heist
            Console.WriteLine("Plan Your Heist!");
            bool keepLooping = true;
            List<TeamMember> teamList = new List<TeamMember>();
-           int bankDifficulty = 100;
+           int bankLevel = 100;
+           int luckValue = new Random().Next(-10,11);
            int accumulatedSkill = 0;
+           int bankDifficulty = bankLevel + luckValue;
 
            while(keepLooping==true)
            {
@@ -37,6 +39,9 @@ namespace Plan_Your_Heist
            {
                accumulatedSkill+= i.SkillLevel;
            }
+
+           Console.WriteLine($"The team's combined skill level is {accumulatedSkill}");
+           Console.WriteLine($"The bank has a difficulty level of {bankDifficulty}");
 
            if(accumulatedSkill<bankDifficulty)
            {
